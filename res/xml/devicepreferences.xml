@@ -83,6 +83,13 @@
 				android:entryValues="@array/vibratePatternPatterns"
 				android:dependency="pref_connect_vibrate_enable"
 				android:enabled="false"/>
+			<EditTextPreference
+				android:title="Custom Pattern"
+				android:summary="Disabled in free version.\nGet the full version to enable this option."
+				android:key="pref_connect_custom_pattern"
+				android:defaultValue="250,100,250"
+				android:dependency="pref_connect_vibrate_enable"
+				android:enabled="false"/>
 			
 		</PreferenceCategory> 
 	</PreferenceScreen>	
@@ -153,8 +160,7 @@
 				android:summary="Vibrate when this device disconnects"
 				android:defaultValue="false"
 				android:key="pref_disconnect_vibrate_enable"
-				android:dependency="pref_disconnect_enable"/>
-				
+				android:dependency="pref_disconnect_enable"/>			
 			<ListPreference
 				android:title="Vibrate Pattern"
 				android:summary="Disabled in free version.\nGet the full version to enable this option."
@@ -164,6 +170,13 @@
 				android:entryValues="@array/vibratePatternPatterns"
 				android:dependency="pref_disconnect_vibrate_enable"
 				android:enabled="false"/>				
+			<EditTextPreference
+				android:title="Custom Pattern"
+				android:summary="Disabled in free version.\nGet the full version to enable this option."
+				android:key="pref_disconnect_custom_pattern"
+				android:defaultValue="250,100,250"
+				android:dependency="pref_disconnect_vibrate_enable"
+				android:enabled="false"/>
 		</PreferenceCategory>
 	</PreferenceScreen>
 </PreferenceScreen>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.deadbeat.bluetoothalertfree"
-      android:versionName="1.5b" android:versionCode="7">
+      android:versionName="2.0.0-a" android:versionCode="8">
     <application android:icon="@drawable/icon" android:label="@string/app_name"
     				android:debuggable="false" >
 
@@ -12,25 +12,25 @@
             </intent-filter>
         </activity>
     
-    	<activity android:name="BluetoothNotifyWorker">
+    	<activity android:name="com.deadbeat.bluetoothnotifylib.BluetoothNotifyWorker">
     		<intent-filter>
-    			<action android:name=".BluetoothNotifyWorker"></action>
+    			<action android:name="com.deadbeat.bluetoothnotifylib.BluetoothNotifyWorker"></action>
     		</intent-filter>
     	</activity>
     	
-		<activity android:name="DeviceOptions" android:label="Device Options">
+		<activity android:name="com.deadbeat.bluetoothnotifylib.DeviceOptions" android:label="Device Options">
 			<intent-filter>
-				<action android:name=".DeviceOptions"></action>
+				<action android:name="com.deadbeat.bluetoothnotifylib.DeviceOptions"></action>
 			</intent-filter>
 		</activity>
 
-		<service android:label="Bluetooth Notify (Service)" android:name="BTNotifyService">
+		<service android:label="Bluetooth Notify (Service)" android:name="com.deadbeat.bluetoothnotifylib.BTNotifyService">
 			<intent-filter>
-				<action android:name=".BTNotifyService"></action>
+				<action android:name="com.deadbeat.bluetoothnotifylib.BTNotifyService"></action>
 			</intent-filter>
 		</service>
 		
-		<receiver android:name=".StartAtBootServiceReceiver">
+		<receiver android:name="com.deadbeeat.bluetoothnotifylib.StartAtBootServiceReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 				<category android:name="android.intent.category.HOME"/>

@@ -30,7 +30,7 @@
 			</intent-filter>
 		</service>
 		
-		<receiver android:name="com.deadbeeat.bluetoothnotifylib.StartAtBootServiceReceiver">
+		<receiver android:name=".StartAtBootServiceReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 				<category android:name="android.intent.category.HOME"/>

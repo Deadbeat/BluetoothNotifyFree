@@ -17,6 +17,10 @@ public class BluetoothNotifyMain extends Activity {
 	private final int KILLSVC = Menu.FIRST + 1;
 	private BluetoothNotifyWorker worker;
 
+	public BluetoothNotifyWorker getWorker() {
+		return this.worker;
+	}
+
 	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle btNotify) {
@@ -28,22 +32,22 @@ public class BluetoothNotifyMain extends Activity {
 
 		// Enable/Disable logging
 		globals.setLoggingEnabled(true);
-		this.worker = new BluetoothNotifyWorker(this, globals);
+		setWorker(new BluetoothNotifyWorker(this, globals));
 		AppDetector detect = new AppDetector();
 
-		this.worker.doLog("-------------------------------");
-		this.worker.doLog("--> Client starting up");
+		getWorker().doLog("-------------------------------");
+		getWorker().doLog("--> Client starting up");
 
 		if (detect.isAppInstalled(this, "com.deadbeat.bluetoothalert") == true) {
-			this.worker.shutdownOnConflict();
+			getWorker().shutdownOnConflict();
 		}
 
-		this.worker.startBTNotifyService();
+		getWorker().startBTNotifyService();
 
 		setContentView(R.layout.deviceselect);
 
-		this.worker.getBTDevices();
-		this.worker.buildDeviceListView(detect.getVersion(this, this.getClass().getPackage().getName()));
+		getWorker().getBTDevices();
+		getWorker().buildDeviceListView(detect.getVersion(this, this.getClass().getPackage().getName()));
 	}
 
 	@Override
@@ -85,5 +89,9 @@ public class BluetoothNotifyMain extends Activity {
 					.setPositiveButton("Yes", confirmListener).setNegativeButton("No", confirmListener).show();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void setWorker(BluetoothNotifyWorker worker) {
+		this.worker = worker;
 	}
 }

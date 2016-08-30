@@ -27,18 +27,21 @@ public class BluetoothNotifyMain extends Activity {
 		super.onCreate(btNotify);
 		Globals globals = new Globals();
 
+
+
 		// Define free/paid version
-		globals.setFreeVersion(true);
+//		globals.setFreeVersion(true);
 
 		// Enable/Disable logging
 		globals.setLoggingEnabled(true);
-		setWorker(new BluetoothNotifyWorker(this, globals));
+//		setWorker(new BluetoothNotifyWorker(this, globals));
+		setWorker(new BluetoothNotifyWorker(this));
 		AppDetector detect = new AppDetector();
 
 		getWorker().doLog("-------------------------------");
 		getWorker().doLog("--> Client starting up");
 
-		if (detect.isAppInstalled(this, "com.deadbeat.bluetoothalert") == true) {
+		if (detect.isAppInstalled(this, "com.deadbeat.bluetoothalert")) {
 			getWorker().shutdownOnConflict();
 		}
 

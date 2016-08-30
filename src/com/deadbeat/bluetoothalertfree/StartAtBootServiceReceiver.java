@@ -14,7 +14,7 @@ public class StartAtBootServiceReceiver extends BroadcastReceiver {
 		if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 			Log.d("BluetoothNotify", "--> Received BOOT_COMPLETED");
 			Globals globals = new Globals();
-			globals.setFreeVersion(true);
+//			globals.setFreeVersion(true);
 			globals.setLoggingEnabled(true);
 			Intent i = new Intent(context, com.deadbeat.bluetoothnotifylib.BTNotifyService.class);
 			i.putExtra("Globals", globals);

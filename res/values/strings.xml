@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bluetooth Notify (Free)</string>
+    <string name="app_name">Notify! for Bluetooth (Free)</string>
     <string name="main_screen_instructions">Select a device to configure.</string>
     <string name="text_device_options_header">Device Options</string>
     <string name="checkbox_device_options_enabled">Enable Notification</string>

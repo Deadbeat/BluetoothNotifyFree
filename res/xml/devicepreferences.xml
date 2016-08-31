@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android">
+	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<CheckBoxPreference
 		android:title="Enable Notification"
@@ -12,8 +12,8 @@
 		android:key="pref_connect_screen"
 		android:title="Connect Options"
 		android:summary="Options for when this device connects"
-		android:dependency="pref_enable">	
-		
+		android:dependency="pref_enable">
+
 		<PreferenceCategory android:title="Connect Options">
 			<CheckBoxPreference
 				android:title="Notify on Connect"
@@ -21,7 +21,7 @@
 				android:defaultValue="true"
 				android:key="pref_connect_enable"
 				android:dependency="pref_enable"/>
-		</PreferenceCategory>				
+		</PreferenceCategory>
 		<PreferenceCategory android:title="Audio Notification">
 			<CheckBoxPreference
 				android:title="Audio Notification"
@@ -37,8 +37,14 @@
 				android:key="pref_connect_ringtone"
 				android:dependency="pref_connect_ringtone_enable"
 				android:ringtoneType="notification"/>
+			<CheckBoxPreference
+				android:title="Text-To-Speech"
+				android:summary="Speak the notification"
+				android:defaultValue="false"
+				android:key="pref_connect_tts_enable"
+				android:dependency="pref_connect_enable"/>
 		</PreferenceCategory>
-		<PreferenceCategory android:title="Visual Notification">		
+		<PreferenceCategory android:title="Visual Notification">
 			<CheckBoxPreference
 				android:title="LED Notification"
 				android:summary="Flash LED when device connects and screen is OFF"
@@ -46,14 +52,14 @@
 				android:key="pref_connect_led_enable"
 				android:dependency="pref_connect_enable"/>
 			<ListPreference
-	            android:title="LED Color*"
-	            android:summary="* Requires Android 2.2 (Froyo)"
-	            android:key="pref_connect_led_color"
-	            android:defaultValue="ff0000ff"
-	            android:entries="@array/colorNames"
-	            android:entryValues="@array/colorValues"
-	            android:dependency="pref_connect_led_enable"/>
-	        <CheckBoxPreference
+				android:title="LED Color*"
+				android:summary="* May not be supported on all devices"
+				android:key="pref_connect_led_color"
+				android:defaultValue="ff0000ff"
+				android:entries="@array/colorNames"
+				android:entryValues="@array/colorValues"
+				android:dependency="pref_connect_led_enable"/>
+			<CheckBoxPreference
 				android:title="Notification Bar"
 				android:summary="Display a message in the notification bar when this device connects"
 				android:defaultValue="false"
@@ -76,29 +82,27 @@
 				android:dependency="pref_connect_enable"/>
 			<ListPreference
 				android:title="Vibrate Pattern"
-				android:summary="Disabled in free version.\nGet the full version to enable this option."
+				android:summary="Select the vibration pattern to use"
 				android:key="pref_connect_vibrate_pattern"
 				android:defaultValue="1"
 				android:entries="@array/vibratePatternNames"
 				android:entryValues="@array/vibratePatternPatterns"
-				android:dependency="pref_connect_vibrate_enable"
-				android:enabled="false"/>
+				android:dependency="pref_connect_vibrate_enable"/>
 			<EditTextPreference
 				android:title="Custom Pattern"
-				android:summary="Disabled in free version.\nGet the full version to enable this option."
+				android:summary="Define custom vibrate pattern"
 				android:key="pref_connect_custom_pattern"
-				android:defaultValue="250,100,250"
-				android:dependency="pref_connect_vibrate_enable"
-				android:enabled="false"/>
-			
-		</PreferenceCategory> 
-	</PreferenceScreen>	
+				android:defaultValue=""
+				android:dependency="pref_connect_vibrate_enable"/>
+
+		</PreferenceCategory>
+	</PreferenceScreen>
 	<PreferenceScreen
 		android:key="pref_disconnect_screen"
 		android:title="Disconnect Options"
 		android:summary="Options for when this device disconnects"
-		android:dependency="pref_enable">	
-	
+		android:dependency="pref_enable">
+
 		<PreferenceCategory android:title="Disconnect Options">
 			<CheckBoxPreference
 				android:title="Notify on Disconnect"
@@ -123,6 +127,13 @@
 				android:key="pref_disconnect_ringtone"
 				android:dependency="pref_disconnect_ringtone_enable"
 				android:ringtoneType="notification"/>
+
+			<CheckBoxPreference
+				android:title="Text-To-Speech"
+				android:summary="Speak the notification"
+				android:defaultValue="false"
+				android:key="pref_disconnect_tts_enable"
+				android:dependency="pref_disconnect_enable"/>
 		</PreferenceCategory>
 
 		<PreferenceCategory android:title="Visual Notification">
@@ -133,13 +144,13 @@
 				android:key="pref_disconnect_led_enable"
 				android:dependency="pref_disconnect_enable"/>
 			<ListPreference
-	            android:title="LED Color*"
-	            android:summary="* Requires Android 2.2 (Froyo)"
-	            android:key="pref_disconnect_led_color"
-	            android:defaultValue="ff0000ff"
-	            android:entries="@array/colorNames"
-	            android:entryValues="@array/colorValues"
-	            android:dependency="pref_disconnect_led_enable"/>
+				android:title="LED Color*"
+				android:summary="* May not be supported on all devices"
+				android:key="pref_disconnect_led_color"
+				android:defaultValue="ff0000ff"
+				android:entries="@array/colorNames"
+				android:entryValues="@array/colorValues"
+				android:dependency="pref_disconnect_led_enable"/>
 			<CheckBoxPreference
 				android:title="Notification Bar"
 				android:summary="Display a message in the notification bar when this device disconnects"
@@ -160,23 +171,21 @@
 				android:summary="Vibrate when this device disconnects"
 				android:defaultValue="false"
 				android:key="pref_disconnect_vibrate_enable"
-				android:dependency="pref_disconnect_enable"/>			
+				android:dependency="pref_disconnect_enable"/>
 			<ListPreference
 				android:title="Vibrate Pattern"
-				android:summary="Disabled in free version.\nGet the full version to enable this option."
+				android:summary="Select the vibration pattern to use"
 				android:key="pref_disconnect_vibrate_pattern"
 				android:defaultValue="1"
 				android:entries="@array/vibratePatternNames"
 				android:entryValues="@array/vibratePatternPatterns"
-				android:dependency="pref_disconnect_vibrate_enable"
-				android:enabled="false"/>				
+				android:dependency="pref_disconnect_vibrate_enable"/>
 			<EditTextPreference
 				android:title="Custom Pattern"
-				android:summary="Disabled in free version.\nGet the full version to enable this option."
+				android:summary="Define custom vibrate pattern"
 				android:key="pref_disconnect_custom_pattern"
 				android:defaultValue="250,100,250"
-				android:dependency="pref_disconnect_vibrate_enable"
-				android:enabled="false"/>
+				android:dependency="pref_disconnect_vibrate_enable"/>
 		</PreferenceCategory>
 	</PreferenceScreen>
 </PreferenceScreen>

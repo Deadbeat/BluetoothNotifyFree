@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 import com.deadbeat.bluetoothnotifylib.AppDetector;
 import com.deadbeat.bluetoothnotifylib.BluetoothNotifyWorker;
-import com.deadbeat.bluetoothnotifylib.Globals;
 
 public class BluetoothNotifyMain extends Activity {
 
@@ -25,23 +24,15 @@ public class BluetoothNotifyMain extends Activity {
 	@Override
 	protected void onCreate(Bundle btNotify) {
 		super.onCreate(btNotify);
-		Globals globals = new Globals();
-
-
-
-		// Define free/paid version
-//		globals.setFreeVersion(true);
 
 		// Enable/Disable logging
-		globals.setLoggingEnabled(true);
-//		setWorker(new BluetoothNotifyWorker(this, globals));
 		setWorker(new BluetoothNotifyWorker(this));
 		AppDetector detect = new AppDetector();
 
 		getWorker().doLog("-------------------------------");
 		getWorker().doLog("--> Client starting up");
 
-		if (detect.isAppInstalled(this, "com.deadbeat.bluetoothalert")) {
+		if (detect.isAppInstalled(this, "com.deadbeat.bluetoothalert") == true) {
 			getWorker().shutdownOnConflict();
 		}
 
@@ -62,34 +53,34 @@ public class BluetoothNotifyMain extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case KILLSVC:
-			// Prompt user for confirmation
-			DialogInterface.OnClickListener confirmListener = new DialogInterface.OnClickListener() {
+			case KILLSVC:
+				// Prompt user for confirmation
+				DialogInterface.OnClickListener confirmListener = new DialogInterface.OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					switch (which) {
-					case DialogInterface.BUTTON_POSITIVE:
-						// User is an Idiot, and said "Yes"
-						// Kill service
-						Intent svc = new Intent(getBaseContext(), com.deadbeat.bluetoothnotifylib.BTNotifyService.class);
-						stopService(svc);
-						finish();
-						break;
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						switch (which) {
+							case DialogInterface.BUTTON_POSITIVE:
+								// User is an Idiot, and said "Yes"
+								// Kill service
+								Intent svc = new Intent(getBaseContext(), com.deadbeat.bluetoothnotifylib.BTNotifyService.class);
+								stopService(svc);
+								finish();
+								break;
 
-					case DialogInterface.BUTTON_NEGATIVE:
-						// User said "No".
-						break;
+							case DialogInterface.BUTTON_NEGATIVE:
+								// User said "No".
+								break;
+						}
+
 					}
-
-				}
-			};
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(
-					"Are you sure you want to stop the service?\n\n"
-							+ "Without BluetoothNotify Service, you will not recieve ANY device notifications.\n\n"
-							+ "NOTE: The service will be restarted when you re-open this application.")
-					.setPositiveButton("Yes", confirmListener).setNegativeButton("No", confirmListener).show();
+				};
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage(
+						"Are you sure you want to stop the service?\n\n"
+								+ "Without BluetoothNotify Service, you will not recieve ANY device notifications.\n\n"
+								+ "NOTE: The service will be restarted when you re-open this application.")
+						.setPositiveButton("Yes", confirmListener).setNegativeButton("No", confirmListener).show();
 		}
 		return super.onOptionsItemSelected(item);
 	}

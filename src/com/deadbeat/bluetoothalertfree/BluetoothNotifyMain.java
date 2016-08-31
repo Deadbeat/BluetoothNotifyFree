@@ -14,6 +14,7 @@ import com.deadbeat.bluetoothnotifylib.Globals;
 
 public class BluetoothNotifyMain extends Activity {
 
+	// Free version -
 	private final int KILLSVC = Menu.FIRST + 1;
 	private BluetoothNotifyWorker worker;
 
